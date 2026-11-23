@@ -1,5 +1,8 @@
-
-
+# Values for the mandatory fees,
+ticket_price = 14.99
+mandatory_drink = 3.99
+gambling_tax = 0.99
+total_fees = ticket_price + mandatory_drink + gambling_tax
 
 # Program opening,
 print("-----------------------------------------------------")
@@ -29,9 +32,9 @@ if len(birthday) != 10:
     print("Error")
 
 # The following code properly formats the date of birth and requests a confirmation from the user,
-day = float(birthday[:2])
-month = float(birthday[3:5])
-year = float(birthday[6:])
+day = int(birthday[:2])
+month = int(birthday[3:5])
+year = int(birthday[6:])
 
 if day <1 or day >31:
     print("Error")
@@ -87,15 +90,9 @@ print("-----------------------------------------------------")
 print(f"Welcome {prefix} {lastname}")
 print("Please enter your budget for today.")
 budget = input("Budget: €")
+budget = float(budget)
 
 # TODO Make it clear that the requested budget is in euro's, then save data as a float.
-
-# Vaste kosten aangeven, vraag gebruiker of hij budget wil aanpassen of niet?
-# Values for the mandatory fees,
-tt = "14.99"
-vd = " 3.99"
-gb = " 0.99"
-t = float(tt) + float(vd) + float(gb)
 
 # Requesting the user if he/she wants to change their budget, then requesting confirmation
 print(" ")
@@ -107,11 +104,11 @@ print("-----------------------------------------------------")
 print(f"Welcome, {prefix} {lastname}")
 print("At Casino TGT, we charge the following fixed fees.")
 print("-----------------------------------------------------")
-print(f"Entree fee:                                   € {tt}")
-print(f"Mandatory drink:                              € {vd}")
-print(f"Gambling tax:                                 € {gb}")
+print(f"Entree fee:                                   € {ticket_price:.2f}")
+print(f"Mandatory drink:                              € {mandatory_drink:.2f}")
+print(f"Gambling tax:                                 € {gambling_tax:.2f}")
 print(" ")
-print(f"Total:                                        € {t} ")
+print(f"Total:                                        € {total_fees:.2f}")
 print("-----------------------------------------------------")
 print(" ")
 print("Do you wish to continue?")
@@ -127,7 +124,7 @@ else:
 
 # TODO Tell the user by how much their budget for the day is insufficient.
 
-if float(budget) < float(t):
+if budget < total_fees:
     print("You're budget for today is insufficient.")
     print("Have a nice day.")
 else:
@@ -138,7 +135,7 @@ else:
     print("Casino the Golden Triangle")
     print("-----------------------------------------------------")
     print(f"Welcome, {prefix} {lastname}")
-    print(f"Your budget for today is €{float(budget) - float(t)}")
+    print(f"Your budget for today is €{round(budget - total_fees, 2)}")
     print("-----------------------------------------------------")
     print(" ")
     print(" ")
@@ -148,12 +145,5 @@ else:
     print("-----------------------------------------------------")
     print(" ")
 
-# TODO Round up the budget to a full integer.
-# TODO Put fixed variables at the top of the code, Example: TICKET_PRICE.
-# TODO Convert budget to a float directly when asking for input.
-# TODO Change Day, Month, Year to integers instead of a float.
-# TODO Gender validation should be shortend by doing the following: if gender.lower() == "male"
-
-# TODO Improve the code and format it better.
 # TODO Improve writing comments. Explain why the code does something, not what it does.
 
