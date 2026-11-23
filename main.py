@@ -7,16 +7,16 @@ print("Casino the Golden Triangle")
 print("-----------------------------------------------------")
 print("Please enter your information")
 name = input("Name: ")
-suffix = input("Suffix: ")
 lastname = input("Lastname: ")
+suffix = input("Suffix: ")
 
 name = name.capitalize()
-suffix = suffix.lower()
 lastname = lastname.capitalize()
+suffix = suffix.lower()
 
 # The following code properly formats the full name,
 if suffix != "":
-    fullname = f"{name} {suffix} {lastname}"
+    fullname = f"{name} {lastname} {suffix}"
 elif suffix == "":
     fullname = f"{name} {lastname}"
 
@@ -64,7 +64,7 @@ elif month == 11:
 elif month == 12:
     month = "December"
 
-birthday_validation = f"{int(day)} {str(month)} {int(year)}"
+birthday_validation = f"{str(month)} {int(day)}, {int(year)}"
 print(f"Is your date of birth: {birthday_validation}?")
 input("[Type ['Y' for yes] & ['N' for no]: ")
 
@@ -75,9 +75,9 @@ print("-----------------------------------------------------")
 print("Please enter your gender.")
 gender = input("[male, female]: ")
 
-if gender.lower == "male" or gender == "m":
+if gender.lower == "male" or gender.lower() == "m":
     prefix = "Mr."
-elif gender.lower() == "female" or gender == "f":
+elif gender.lower() == "female" or gender.lower() == "f":
     prefix = "Ms."
 else:
     prefix = f" {str(name[:1])}."
@@ -114,13 +114,13 @@ print(" ")
 print(f"Total:                                        € {t} ")
 print("-----------------------------------------------------")
 print(" ")
-print("Continue?")
-akkoord_vaste_kosten = input("Type ['Y' for yes] & ['N' for no]: ")
+print("Do you wish to continue?")
+fixed_fees_validation = input("Type ['Y' for yes] & ['N' for no]: ")
 
 # TODO Turn the above into a loop to properly validate the users input.
 
 # Validating the users input,
-if akkoord_vaste_kosten.lower() == "yes" or akkoord_vaste_kosten.lower() == "y":
+if fixed_fees_validation.lower() == "yes" or fixed_fees_validation.lower() == "y":
     print(" ")
 else:
     print("Error")
