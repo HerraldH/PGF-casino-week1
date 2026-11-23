@@ -1,191 +1,159 @@
-# Programma opening,
+
+
+
+# Program opening,
 print("-----------------------------------------------------")
-print("Casino de Gouden Driehoek")
+print("Casino the Golden Triangle")
 print("-----------------------------------------------------")
+print("Please enter your information")
+name = input("Name: ")
+suffix = input("Suffix: ")
+lastname = input("Lastname: ")
 
-# Einde programma opening.
-# -------------------------------------------- #
+name = name.capitalize()
+suffix = suffix.lower()
+lastname = lastname.capitalize()
 
-# Persoonsgegevens opvragen,
-print("Vul uw Gegevens in")
+# The following code properly formats the full name,
+if suffix != "":
+    fullname = f"{name} {suffix} {lastname}"
+elif suffix == "":
+    fullname = f"{name} {lastname}"
 
-# Voornaam opvragen
-voornaam = input("Voornaam: ")
-
-# Tussenvoegsel opvragen
-tussenvoegsel = input("Tussenvoegsel: ")
-
-# Achternaam opvragen
-achternaam = input("Achternaam: ")
-
-# Einde persoonsgegevens opvragen.
-# -------------------------------------------- #
-
-# Persoonsgegevens formatteren,
-
-# [capitalized]
-voornaam = voornaam.capitalize()
-achternaam = achternaam.capitalize()
-
-# [lowercase]
-tussenvoegsel = tussenvoegsel.lower()
-
-# Volledige naam
-if tussenvoegsel != "":
-    volledige_naam = f"{voornaam} {tussenvoegsel} {achternaam}"
-elif tussenvoegsel == "":
-    volledige_naam = f"{voornaam} {achternaam}"
-
-# Einde persoonsgegevens formatteren.
-# -------------------------------------------- #
-
-# Geboortedatum,
-# Format -> [dd-mm-yyyy]
-
+# Requesting the users date of birth,
 print("-----------------------------------------------------")
-print(f"Hallo {volledige_naam}.")
-print("Wat is uw geboortedatum?")
+print(f"Hello {fullname}.")
+print("Please enter your date of birth.")
+birthday = input("[dd-mm-yyyy]: ")
+if len(birthday) != 10:
+    print("Error")
 
-# Geboortedatum opvragen
-geboortedatum = input("[dd-mm-yyyy]: ")
+# The following code properly formats the date of birth and requests a confirmation from the user,
+day = float(birthday[:2])
+month = float(birthday[3:5])
+year = float(birthday[6:])
 
-# Geboortedatum format check,
+if day <1 or day >31:
+    print("Error")
 
-if len(geboortedatum) != 10:
-    print("Ongeldig format")
+if month <1 or month >12:
+    print("Error")
 
-dag = float(geboortedatum[:2])
-maand = float(geboortedatum[3:5])
-jaar = float(geboortedatum[6:])
+if month == 1:
+    month = "January"
+elif month == 2:
+    month = "February"
+elif month == 3:
+    month = "March"
+elif month == 4:
+    month = "April"
+elif month == 5:
+    month = "May"
+elif month == 6:
+    month = "June"
+elif month == 7:
+    month = "July"
+elif month == 8:
+    month = "August"
+elif month == 9:
+    month = "September"
+elif month == 10:
+    month = "October"
+elif month == 11:
+    month = "November"
+elif month == 12:
+    month = "December"
 
-if dag <1 or dag >31:
-    print("Ongeldig format")
+birthday_validation = f"{int(day)} {str(month)} {int(year)}"
+print(f"Is your date of birth: {birthday_validation}?")
+input("[Type ['Y' for yes] & ['N' for no]: ")
 
-if maand <1 or maand >12:
-    print("Ongeldig format")
+# TODO utilize the current date and time to validate if the user is old enough to enter the casino, shut down program if user is underage.
 
-if maand == 1:
-    maand = "januari"
-elif maand == 2:
-    maand = "februari"
-elif maand == 3:
-    maand = "maart"
-elif maand == 4:
-    maand = "april"
-elif maand == 5:
-    maand = "mei"
-elif maand == 6:
-    maand = "juni"
-elif maand == 7:
-    maand = "juli"
-elif maand == 8:
-    maand = "augustus"
-elif maand == 9:
-    maand = "oktober"
-elif maand == 10:
-    maand = "september"
-elif maand == 11:
-    maand = "november"
-elif maand == 12:
-    maand = "december"
-
-geboortedatum_check = f"{int(dag)} {str(maand)} {int(jaar)}"
-print(f"Is uw geboorte datum: {geboortedatum_check}?")
-input("[Typ ['Y' voor akkoord] & ['N' voor niet akkoord]: ")
-
-# als niet oud genoeg → hier melding doen + programma afsluiten
-
-# geen idee hoe ik kan rekenen met de actueele tijd / datum
-
+# Requesting and formatting the users gender.
 print("-----------------------------------------------------")
+print("Please enter your gender.")
+gender = input("[male, female]: ")
 
-# -------------------------------------------- #
-# Geslacht [man, vrouw] --> [meneer, mevrouw]
-print("Wat is uw geslacht?")
-geslacht = input("[man, vrouw]: ")
-print("-----------------------------------------------------")
-
-# Welkom meneeer {naam}, wat is uw budget voor vandaag?
-if geslacht == "man" or geslacht == "Man":
-    aansprekingswoord = "meneer"
-elif geslacht == "vrouw" or geslacht == "Vrouw":
-    aansprekingswoord = "mevrouw"
+if gender.lower == "male" or gender == "m":
+    prefix = "Mr."
+elif gender.lower() == "female" or gender == "f":
+    prefix = "Ms."
 else:
-    aansprekingswoord = f" {str(voornaam[:1])}."
+    prefix = f" {str(name[:1])}."
 
-print(f"Welkom {aansprekingswoord} {achternaam}")
-print("Wat is uw budget voor vandaag?")
+# Requesting the users budget for the day.
+print("-----------------------------------------------------")
+print(f"Welcome {prefix} {lastname}")
+print("Please enter your budget for today.")
 budget = input("Budget: €")
-# Maakt duidelijk dat het gaat om euro's en sla op als een float
+
+# TODO Make it clear that the requested budget is in euro's, then save data as a float.
 
 # Vaste kosten aangeven, vraag gebruiker of hij budget wil aanpassen of niet?
-
+# Values for the mandatory fees,
 tt = "14.99"
 vd = " 3.99"
 gb = " 0.99"
 t = float(tt) + float(vd) + float(gb)
 
+# Requesting the user if he/she wants to change their budget, then requesting confirmation
 print(" ")
 print(" ")
 print(" ")
 print("-----------------------------------------------------")
-print("Casino de Gouden Driehoek")
+print("Casino the Golden Triangle")
 print("-----------------------------------------------------")
-print(f"Welkom, {aansprekingswoord} {achternaam}")
-print("Bij Casino DGD hanteren wij de volgende vaste kosten.")
+print(f"Welcome, {prefix} {lastname}")
+print("At Casino TGT, we charge the following fixed fees.")
 print("-----------------------------------------------------")
-print(f"Toegangsticket:                               € {tt}")
-print(f"Één verplicht drankje:                        € {vd}")
-print(f"Gokbelasting:                                 € {gb}")
+print(f"Entree fee:                                   € {tt}")
+print(f"Mandatory drink:                              € {vd}")
+print(f"Gambling tax:                                 € {gb}")
 print(" ")
-print(f"Totaal:                                       € {t} ")
+print(f"Total:                                        € {t} ")
 print("-----------------------------------------------------")
 print(" ")
+print("Continue?")
+akkoord_vaste_kosten = input("Type ['Y' for yes] & ['N' for no]: ")
 
-# Vraag gebruiker om bevestiging / doorgaan
+# TODO Turn the above into a loop to properly validate the users input.
 
-print("Gaat u hier mee akkoord?")
-akkoord_vaste_kosten = input("Typ ['Y' voor akkoord] & ['N' voor niet akkoord]: ")
-
-if akkoord_vaste_kosten == "Y" or akkoord_vaste_kosten == "y":
+# Validating the users input,
+if akkoord_vaste_kosten.lower() == "yes" or akkoord_vaste_kosten.lower() == "y":
     print(" ")
 else:
-    print("Niet akkoord")
-# geen idee hoe ik dit mooi kan laten doorlopen. heb nog niet goed kunnen uitzoeken hoe ik loops kan maken etc...
+    print("Error")
 
+# TODO Tell the user by how much their budget for the day is insufficient.
 
-# "Uw buget voor vandaag is {bedrag} te weinig"
 if float(budget) < float(t):
-    print(" Uw budget voor vandaag is te weinig.")
-    print("Fijne dag verder.")
+    print("You're budget for today is insufficient.")
+    print("Have a nice day.")
 else:
     print(" ")
     print(" ")
     print(" ")
     print("-----------------------------------------------------")
-    print("Casino de Gouden Driehoek")
+    print("Casino the Golden Triangle")
     print("-----------------------------------------------------")
-    print(f"Welkom, {aansprekingswoord} {achternaam}")
-    print(f"Uw budget voor vandaag is €{float(budget) - float(t)}")
-    print("-----------------------------------------------------")
-    print(" ")
-    print(" ")
-    print(" ")
-    print(" ")
-    print(" ")
+    print(f"Welcome, {prefix} {lastname}")
+    print(f"Your budget for today is €{float(budget) - float(t)}")
     print("-----------------------------------------------------")
     print(" ")
+    print(" ")
+    print(" ")
+    print(" ")
+    print(" ")
+    print("-----------------------------------------------------")
+    print(" ")
 
-# Final Output
+# TODO Round up the budget to a full integer.
+# TODO Put fixed variables at the top of the code, Example: TICKET_PRICE.
+# TODO Convert budget to a float directly when asking for input.
+# TODO Change Day, Month, Year to integers instead of a float.
+# TODO Gender validation should be shortend by doing the following: if gender.lower() == "male"
 
+# TODO Improve the code and format it better.
+# TODO Improve writing comments. Explain why the code does something, not what it does.
 
-# Volgorde van de maanden na checken
-# Ga saldo afronden
-# Vaste constanten boven aan de code zetten -> zoals TICKET_PRICE + Alles engelstalig maken
-# Budget direct bij input omzetten naar een float
-# dag, maand & jaar veranderen naar int i.p.v. float
-# bij de gender controle kun je de controle net iets korter maken door `if geslacht.lower() == "man"` te doen.
-# Dan zet hij zelf het geslacht al om naar kleine letters, en hoef je maar één controle uit te voeren.
-
-# Maak betere comments, vertel niet wat iets doet, maar waarom het het doet
-# code opschonen + verbeteren
